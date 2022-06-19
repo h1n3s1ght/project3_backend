@@ -15,7 +15,7 @@ const MONGODB_URL = process.env.MONGODB_URL;
 
     //Port Set Variable
     //============
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
     //Database connection
     //==============
@@ -23,7 +23,7 @@ const db = mongoose.connection;
 
     //Connect MongoDB
     //==============
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -65,9 +65,15 @@ app.use(express.urlencoded({ extended: false }));
         //===== Index / GET ==========
         //========================
 
+app.get("/", (req, res) =>{
+    res.send("Hello World");
+})
+
         //========================
         //===== New / GET ==========
         //========================
+
+app.put("/list")
 
         //========================
         //===== Show / GET ==========
