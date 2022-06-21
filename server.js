@@ -84,10 +84,10 @@ app.use(express.json());
         //===== Index / GET =========
         //========================
 app.get("/", (req, res) => {
-    res.send("Hello World")
+    res.redirect("/Landing")
 })
 
-app.get("/", async (req, res) => {
+app.get("/Landing", async (req, res) => {
     try{
         res.json(await List.find({}));
     } catch(error) {
