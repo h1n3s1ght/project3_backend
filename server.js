@@ -45,7 +45,7 @@ const ListSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-   item: {type: Object [{
+   item: {type: Object[{
     title: String,
     importance: String,
     timeToComplete: String,
@@ -84,10 +84,10 @@ app.use(express.json());
         //========================
         //===== Index / GET =========
         //========================
-app.get("/Landing", async (req, res) => {
+app.get("/", async (req, res) => {
     try{
         res.json(await List.find({}));
-    } catch (error) {
+    } catch(error) {
         res.status(400).json(error);
     }
 });
@@ -120,7 +120,7 @@ app.post("/TaskList", async (req, res) => {
         //========================
 app.put("/TaskList/:_id", async (req, res) => {
     try {
-        res.json( await List.findByIdAndUpdate(req.params._id, req.body, { new: true }))
+        res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
     } catch(error){
         res.status(400).json(error);
     }
@@ -130,7 +130,7 @@ app.put("/TaskList/:_id", async (req, res) => {
         //=========================
         //===== Destroy / DELETE ======
         //=========================
- app.put("/Landing", async (req, res) => {
+ app.put("/", async (req, res) => {
     try {
          res.json(await List.findByIdAndRemove(req.params.id))
       } catch(error) {
