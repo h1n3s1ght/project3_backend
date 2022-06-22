@@ -84,10 +84,10 @@ app.use(express.json());
         //========================
         //===== Index / GET =========
         //========================
-app.get("/", async (req, res) => {
+app.get("/Landing", async (req, res) => {
     try{
         res.json(await List.find({}));
-    } catch(error) {
+    } catch (error) {
         res.status(400).json(error);
     }
 });
@@ -130,7 +130,7 @@ app.put("/TaskList/:_id", async (req, res) => {
         //=========================
         //===== Destroy / DELETE ======
         //=========================
- app.put("/", async (req, res) => {
+ app.put("/Landing", async (req, res) => {
     try {
          res.json(await List.findByIdAndRemove(req.params.id))
       } catch(error) {
