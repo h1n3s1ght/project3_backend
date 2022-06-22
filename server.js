@@ -101,7 +101,9 @@ app.get("/", async (req, res) => {
         //========================
     app.post("/TaskList/:_id", async (req, res) => {
         try {
-            res.json(await List.findById(req.params._id))
+            res.json(await List.findById(req.params.id))
+        } catch (error) {
+            res.status(400).json(erros);
         }
     })
 
@@ -112,7 +114,7 @@ app.get("/", async (req, res) => {
         //========================
         //===== Create / POST =======
         //========================
-app.post("/TaskList/new", async (req, res) => {
+app.post("/TaskList", async (req, res) => {
     try {
         res.json(await List.create(req.body))
     } catch(error) {
@@ -123,9 +125,9 @@ app.post("/TaskList/new", async (req, res) => {
         //========================
         //===== Update / PUT ========
         //========================
-app.put("/TaskList/:_id/edit", async (req, res) => {
+app.put("/TaskList/:_id", async (req, res) => {
     try {
-        res.json( await List.findByIdAndUpdate(req.params._id, req.body, { new: true }))
+        res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
     } catch(error){
         res.status(400).json(error);
     }
