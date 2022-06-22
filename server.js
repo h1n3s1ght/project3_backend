@@ -45,14 +45,14 @@ const ListSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-   items: [{
-    item: {
-    title: String,
-    importance: String,
-    timeToComplete: String,
-    due: String,
-    status: String,
-   }}]
+   items: {
+        item: [{
+            title: String,
+            importance: String,
+            timeToComplete: String,
+            due: String,
+            status: String,
+   }]}
 });
 
 const List = mongoose.model("List", ListSchema);
