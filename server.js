@@ -99,13 +99,6 @@ app.get("/", async (req, res) => {
         //========================
         //===== Show / GET ==========
         //========================
-    app.get("/TaskList/:_id", async (req, res) => {
-        try {
-            res.json(await List.findById(req.params.id))
-        } catch (error) {
-            res.status(400).json(error);
-        }
-    })
 
         //========================
         //===== Edit / GET ===========
