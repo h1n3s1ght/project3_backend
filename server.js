@@ -120,7 +120,7 @@ app.post("/TaskList", async (req, res) => {
         //========================
 app.put("/TaskList/:_id", async (req, res) => {
     try {
-        res.json( await List.findByIdAndUpdate(req.params._id, req.body, { new: true }))
+        res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
     } catch(error){
         res.status(400).json(error);
     }
