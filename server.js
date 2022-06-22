@@ -50,6 +50,7 @@ const ListSchema = new mongoose.Schema({
     importance: String,
     timeToComplete: String,
     due: String,
+    status: String,
    }]}
 });
 
@@ -83,11 +84,7 @@ app.use(express.json());
         //========================
         //===== Index / GET =========
         //========================
-app.get("/", (req, res) => {
-    res.redirect("/Landing")
-})
-
-app.get("/Landing", async (req, res) => {
+app.get("/", async (req, res) => {
     try{
         res.json(await List.find({}));
     } catch(error) {
@@ -121,9 +118,9 @@ app.post("/TaskList", async (req, res) => {
         //========================
         //===== Update / PUT ========
         //========================
-app.put("/TaskList/:id", async (req, res) => {
+app.put("/TaskList/:_id", async (req, res) => {
     try {
-        res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
+        res.json( await List.findByIdAndUpdate(req.params._id, req.body, { new: true }))
     } catch(error){
         res.status(400).json(error);
     }
