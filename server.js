@@ -45,7 +45,7 @@ const ListSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-   item: {type: [{
+   item: {type: Object [{
     title: String,
     importance: String,
     timeToComplete: String,
