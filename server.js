@@ -103,7 +103,7 @@ app.get("/", async (req, res) => {
         try {
             res.json(await List.findById(req.params.id))
         } catch (error) {
-            res.status(400).json(erros);
+            res.status(400).json(error);
         }
     })
 
