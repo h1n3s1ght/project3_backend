@@ -99,7 +99,7 @@ app.get("/", async (req, res) => {
         //========================
         //===== Show / GET ==========
         //========================
-    app.post("/TaskList/:_id", async (req, res) => {
+    app.get("/TaskList/:_id", async (req, res) => {
         try {
             res.json(await List.findById(req.params.id))
         } catch (error) {
