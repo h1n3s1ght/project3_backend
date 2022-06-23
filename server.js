@@ -111,7 +111,7 @@ app.get("/Landing", async (req, res) => {
         //========================
         //===== Create / POST =======
         //========================
-app.post("/TaskList/:_id", async (req, res) => {
+app.post("/TaskList/:id", async (req, res) => {
     try {
         res.json(await List.create(req.body))
         res.json(await List.find({}))
@@ -123,7 +123,7 @@ app.post("/TaskList/:_id", async (req, res) => {
         //========================
         //===== Update / PUT ========
         //========================
-app.put("/TaskList/:_id", async (req, res) => {
+app.put("/TaskList/:id", async (req, res) => {
     try {
         res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
     } catch(error){
