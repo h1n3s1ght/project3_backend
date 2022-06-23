@@ -114,6 +114,7 @@ app.get("/Landing", async (req, res) => {
 app.post("/TaskList/:_id", async (req, res) => {
     try {
         res.json(await List.create(req.body))
+        res.json(await List.findById(req.body.id))
     } catch(error) {
         res.status(400).json(error);
     }
