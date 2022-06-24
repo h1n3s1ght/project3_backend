@@ -45,7 +45,7 @@ const ListSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-    item: [{
+    task: [{
             title: String,
             importance: String,
             timeToComplete: String,
@@ -114,7 +114,6 @@ app.get("/Landing", async (req, res) => {
 app.post("/TaskList/:id", async (req, res) => {
     try {
         res.json(await List.create(req.body))
-        res.json(await List.find({}))
     } catch(error) {
         res.status(400).json(error);
     }
@@ -125,7 +124,8 @@ app.post("/TaskList/:id", async (req, res) => {
         //========================
 app.put("/TaskList/:id", async (req, res) => {
     try {
-        res.json( await List.findByIdAndUpdate(req.params.id, req.body, { new: true }))
+        console.log(req.body)
+        res.json( await List.findByIdAndUpdate(req.params.id, {$push : {...req.body}}, { new: true }))
     } catch(error){
         res.status(400).json(error);
     }
@@ -135,7 +135,7 @@ app.put("/TaskList/:id", async (req, res) => {
         //=========================
         //===== Destroy / DELETE ======
         //=========================
- app.put("/", async (req, res) => {
+ app.put("/Landing", async (req, res) => {
     try {
          res.json(await List.findByIdAndRemove(req.params.id))
       } catch(error) {
